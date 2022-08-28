@@ -30,15 +30,3 @@ first: for (let i = 0; i < 3; i++) {
     }
   }
 }
-
-const lines = 5;
-let result1 = '';
-// Проверяется именно переменная result, формируйте строку в ней
-for (let i = 1; i <= lines; i++) {
-    for (let k = 0; k < i; k++) {
-      result1 += `${' '.repeat(lines - k)}1`;
-    }
-    result1 += '\n';
-}
-
-console.log(result1);
