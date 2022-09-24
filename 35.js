@@ -56,8 +56,8 @@ const clon = Object.assign({}, add);
 
 clon.d = 20;
 
-// console.log(add);
-// console.log(clon);
+console.log(add);
+console.log(clon);
 
 const oldArray = ['a', 'b', 'c'];
 const newArray = oldArray.slice();

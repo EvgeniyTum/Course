@@ -1,24 +1,58 @@
-const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi'];
-
-function sortStudentsByGroups(arr) {
-    let sortStudents = arr.sort();
-    const result = [];
-    for (let i = 0; i < 4; i++) {
-        if (i === 3 && sortStudents.length !== 0) {
-            result.push(`Оставшиеся студенты: ${sortStudents.join(', ')}`);
-            break;
-        } if (i === 3 && sortStudents.length === 0) {
-            result.push(`Оставшиеся студенты: -}`);
-            break;
-        } 
-        let group = [];
-        for (let j = 0; j < 3; j++) {
-            group.push(sortStudents[j]);
+const restorantData = {
+    menu: [
+        {
+            name: 'Salad Caesar',
+            price: '14$'
+        },
+        {
+            name: 'Pizza Diavola',
+            price: '9$'
+        },
+        {
+            name: 'Beefsteak',
+            price: '17$'
+        },
+        {
+            name: 'Napoleon',
+            price: '7$'
         }
-        result.push(group);
-        sortStudents = sortStudents.slice(3);
-    }
-    return result;
+    ],
+    waitors: [
+        {name: 'Alice', age: 22}, {name: 'John', age: 24}
+    ],
+    averageLunchPrice: '20$',
+    openNow: true
+};
+
+// function isOpen(prop) {
+//     let answer = '';
+//     !prop ? answer = 'Закрыто' : answer = 'Открыто';
+
+//     return answer;
+// }
+
+// console.log(isOpen(restorantData.openNow));
+
+// function isAverageLunchPriceTrue(fDish, sDish, average) {
+//     if (+fDish.price.slice(0, -1) + (sDish.price) > average) {
+//         return 'Цена ниже средней';
+//     } else {
+//         return 'Цена выше средней';
+//     }
+// }
+
+// console.log(isAverageLunchPriceTrue(restorantData.menu[0], restorantData.menu[1], restorantData.averageLunchPrice));
+
+function transferWaitors(data) {
+    const copy = Object.assign({}, data);
+    const {waitors} = data;
+    const copyWaitors = Object.assign({}, waitors);
+
+    copy.waitors = copyWaitors;
+
+    copy.waitors[0] = {name: 'Mike', age: 32};
+    return copy;
 }
 
-console.log(sortStudentsByGroups(students));
+console.log(transferWaitors(restorantData));
+console.log(restorantData);
