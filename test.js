@@ -1,58 +1,25 @@
-const restorantData = {
-    menu: [
-        {
-            name: 'Salad Caesar',
-            price: '14$'
-        },
-        {
-            name: 'Pizza Diavola',
-            price: '9$'
-        },
-        {
-            name: 'Beefsteak',
-            price: '17$'
-        },
-        {
-            name: 'Napoleon',
-            price: '7$'
+function deepCount(a) {
+    let result = a.length;
+
+    function testOnArray(a) {
+        for (let i = 0; i < a.length; i++) {
+            if (Array.isArray(a[i])) {
+                result += a[i].length;
+                testOnArray(a[i]);
+            }
         }
-    ],
-    waitors: [
-        {name: 'Alice', age: 22}, {name: 'John', age: 24}
-    ],
-    averageLunchPrice: '20$',
-    openNow: true
-};
+    }
+    testOnArray(a);
 
-// function isOpen(prop) {
-//     let answer = '';
-//     !prop ? answer = 'Закрыто' : answer = 'Открыто';
-
-//     return answer;
-// }
-
-// console.log(isOpen(restorantData.openNow));
-
-// function isAverageLunchPriceTrue(fDish, sDish, average) {
-//     if (+fDish.price.slice(0, -1) + (sDish.price) > average) {
-//         return 'Цена ниже средней';
-//     } else {
-//         return 'Цена выше средней';
-//     }
-// }
-
-// console.log(isAverageLunchPriceTrue(restorantData.menu[0], restorantData.menu[1], restorantData.averageLunchPrice));
-
-function transferWaitors(data) {
-    const copy = Object.assign({}, data);
-    const {waitors} = data;
-    const copyWaitors = Object.assign({}, waitors);
-
-    copy.waitors = copyWaitors;
-
-    copy.waitors[0] = {name: 'Mike', age: 32};
-    return copy;
+    return result;
 }
 
-console.log(transferWaitors(restorantData));
-console.log(restorantData);
+console.log(deepCount([1, 5, 3]));
+
+console.log(deepCount(["1", 5, "3", ["10"]]));
+
+console.log(deepCount([1, 2, [3, 4, [5]]]));
+
+console.log(deepCount([]));
+
+console.log(deepCount([[[[[[[[[]]]]]]]]]));
